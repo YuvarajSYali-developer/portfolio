@@ -16,7 +16,7 @@ npm run build && npm start
 
 Static hosting instead of a Node server: `STATIC_EXPORT=1 npm run build` writes a fully static site to `out/`.
 
-Set `NEXT_PUBLIC_SITE_URL` to the production domain (used for canonical URL, Open Graph, sitemap and robots). It falls back to `https://yuvarajyali.onrender.com`.
+Set `NEXT_PUBLIC_SITE_URL` to the production domain (used for canonical URL, Open Graph, sitemap and robots). It falls back to `https://portfolio-indol-psi-55.vercel.app`.
 
 ## Where things live
 

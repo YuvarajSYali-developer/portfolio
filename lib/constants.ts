@@ -2,7 +2,7 @@
  * Site-wide constants. Replace SITE_URL with the production domain once deployed
  * (or set NEXT_PUBLIC_SITE_URL in the hosting environment).
  */
-export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://yuvarajyali.onrender.com").replace(/\/$/, "");
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://portfolio-indol-psi-55.vercel.app").replace(/\/$/, "");
 
 export const SECTION_IDS = {
   home: "home",
