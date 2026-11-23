@@ -9,6 +9,7 @@ import { SectionHeading, Reveal } from "@/components/ui/section-heading";
 import { SpotlightCard } from "@/components/ui/spotlight-card";
 import { PortfolioProjectsShowcase } from "@/components/ui/portfolio-projects-showcase";
 import { GitHubIcon } from "@/components/ui/brand-icons";
+import { VideoModal } from "@/components/ui/video-modal";
 import { AVitalVisual, PROJECT_VISUALS } from "@/components/visuals/project-visuals";
 import { projects, type Project } from "@/lib/portfolio-data";
 import { SECTION_IDS } from "@/lib/constants";
@@ -56,28 +57,42 @@ function ProjectMedia({ project, className }: { project: Project; className?: st
 /* ───────────── Pieces ───────────── */
 
 function LinkButtons({ project }: { project: Project }) {
+  const [video, setVideo] = useState<{ src: string; poster?: string } | null>(null);
+  const cls = (primary: boolean) =>
+    cn(
+      "group/link inline-flex h-10 items-center gap-2 rounded-full px-4 text-[0.82rem] font-medium transition-all duration-300",
+      primary ? "bg-fg text-ink hover:bg-white" : "border border-line-strong text-fg hover:border-fg-2",
+    );
   return (
     <div className="flex flex-wrap gap-2">
       {project.links.map((l) => {
         const Icon = l.kind === "github" ? GitHubIcon : l.kind === "demo" ? Globe : l.kind === "video" ? PlayCircle : FileText;
         const primary = l.kind !== "doc";
+        const label = l.kind === "demo" ? "Live demo" : l.label;
+        // Videos hosted on this site play in an on-page player instead of navigating away.
+        if (l.kind === "video" && l.href.startsWith("/")) {
+          return (
+            <button key={l.href} type="button" onClick={() => setVideo({ src: l.href, poster: l.poster })} className={cls(primary)}>
+              <Icon className="size-3.5" />
+              {label}
+            </button>
+          );
+        }
         return (
-          <a
-            key={l.href + l.label}
-            href={l.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={cn(
-              "group/link inline-flex h-10 items-center gap-2 rounded-full px-4 text-[0.82rem] font-medium transition-all duration-300",
-              primary ? "bg-fg text-ink hover:bg-white" : "border border-line-strong text-fg hover:border-fg-2",
-            )}
-          >
+          <a key={l.href + l.label} href={l.href} target="_blank" rel="noopener noreferrer" className={cls(primary)}>
             <Icon className="size-3.5" />
-            {l.kind === "demo" ? "Live demo" : l.label}
+            {label}
             <ArrowUpRight className="size-3.5 transition-transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" aria-hidden />
           </a>
         );
       })}
+      <VideoModal
+        open={video !== null}
+        onClose={() => setVideo(null)}
+        src={video?.src ?? ""}
+        poster={video?.poster}
+        title={`${project.title} — demo`}
+      />
     </div>
   );
 }

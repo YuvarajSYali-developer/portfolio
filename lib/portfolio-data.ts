@@ -198,7 +198,8 @@ export type Project = {
   results: { value: string; label: string }[];
   details: string[];
   tags: string[];
-  links: { label: string; href: string; kind: "demo" | "video" | "github" | "doc" }[];
+  /** A local href (starting with "/") for a video plays in an on-page player. */
+  links: { label: string; href: string; kind: "demo" | "video" | "github" | "doc"; poster?: string }[];
   visual: ProjectVisual;
   /** Drop a real screenshot into /public/images/projects and set this path to replace the abstract visual. */
   image?: string;
@@ -266,7 +267,7 @@ export const projects: Project[] = [
     tags: ["Blender", "Python", "NumPy", "GNM v3", "Computer Vision", "Synthetic Data"],
     links: [
       { label: "GitHub", href: "https://github.com/YuvarajSYali-developer/GazeForge", kind: "github" },
-      { label: "Demo video", href: "https://github.com/YuvarajSYali-developer/GazeForge/blob/main/demo/GazeForge_demo.mp4", kind: "video" },
+      { label: "Demo video", href: "/videos/gazeforge-demo.mp4", kind: "video", poster: "/videos/gazeforge-demo-poster.webp" },
     ],
     visual: "gazeforge",
     image: "/images/projects/gazeforge.webp",
