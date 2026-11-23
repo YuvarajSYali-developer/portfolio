@@ -229,7 +229,7 @@ export default function Projects() {
           index="03"
           eyebrow="Featured Projects"
           title="Selected Work."
-          intro="Five systems across ML engineering, applied research, full-stack development and embedded IoT."
+          intro="Five systems across ML engineering, 3D graphics and synthetic data, applied research and full-stack development."
         />
 
         <Reveal>
@@ -269,7 +269,7 @@ export default function Projects() {
           </div>
         </div>
         <p className="mt-6 text-right font-mono text-[0.6rem] uppercase tracking-[0.16em] text-muted">
-          Project visuals are illustrative — see the live demos for the real interfaces.
+          GazeForge shows real renders; the other project visuals are illustrative — see the live demos for the real interfaces.
         </p>
       </div>
     </section>

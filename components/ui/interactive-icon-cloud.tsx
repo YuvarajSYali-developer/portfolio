@@ -10,7 +10,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
-  siArduino, siCplusplus, siDocker, siExpress, siFastapi, siFlask, siGit, siHuggingface, siJavascript,
+  siArduino, siBlender, siCplusplus, siDocker, siExpress, siFastapi, siFlask, siGit, siHuggingface, siJavascript,
   siNextdotjs, siNodedotjs, siNumpy, siPandas, siPyg, siPython, siPytorch, siRailway, siReact, siRender,
   siScikitlearn, siShadcnui, siSqlalchemy, siSqlite, siTailwindcss, siTensorflow,
   type SimpleIcon,
@@ -19,7 +19,7 @@ import { usePrefersReducedMotion } from "@/lib/hooks";
 import { cn } from "@/lib/utils";
 
 const ICONS: Record<string, SimpleIcon> = {
-  arduino: siArduino, cplusplus: siCplusplus, docker: siDocker, express: siExpress, fastapi: siFastapi,
+  arduino: siArduino, blender: siBlender, cplusplus: siCplusplus, docker: siDocker, express: siExpress, fastapi: siFastapi,
   flask: siFlask, git: siGit, huggingface: siHuggingface, javascript: siJavascript, nextdotjs: siNextdotjs,
   nodedotjs: siNodedotjs, numpy: siNumpy, pandas: siPandas, pyg: siPyg, python: siPython, pytorch: siPytorch,
   railway: siRailway, react: siReact, render: siRender, scikitlearn: siScikitlearn, shadcnui: siShadcnui,

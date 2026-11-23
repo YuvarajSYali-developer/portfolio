@@ -377,8 +377,29 @@ export function WaterVisual() {
   );
 }
 
+/* ───────────── GazeForge — fallback eye diagram (the project normally shows real renders) ───────────── */
+
+export function GazeVisual() {
+  return (
+    <Frame label="Illustrative eye diagram with iris, gaze direction and fixation point">
+      <text x="24" y="34" fill={C.fg} fontSize="12" style={mono}>GAZEFORGE // EYE RIG</text>
+      {[200, 440].map((cx) => (
+        <g key={cx}>
+          <ellipse cx={cx} cy="200" rx="92" ry="60" fill="#F5F7FC" fillOpacity="0.9" />
+          <circle cx={cx + 18} cy="200" r="38" fill={C.violet} />
+          <circle cx={cx + 18} cy="200" r="15" fill={C.ink} />
+          <line x1={cx + 18} y1="200" x2="320" y2="70" stroke={C.cyan} strokeDasharray="4 6" className="animate-dash" />
+        </g>
+      ))}
+      <circle cx="320" cy="70" r="6" fill={C.cyan} />
+      <text x="332" y="74" fill={C.cyan} fontSize="9" style={mono}>FIXATION</text>
+    </Frame>
+  );
+}
+
 export const PROJECT_VISUALS: Record<ProjectVisual, () => React.ReactElement> = {
   netguard: NetGuardVisual,
+  gazeforge: GazeVisual,
   avital: () => <AVitalVisual />,
   chess: ChessVisual,
   civilinc: CivilIncVisual,

@@ -183,7 +183,7 @@ export const experience: ExperienceItem[] = [
 
 /* ───────────────────────── Projects ───────────────────────── */
 
-export type ProjectVisual = "netguard" | "avital" | "chess" | "civilinc" | "water";
+export type ProjectVisual = "netguard" | "gazeforge" | "avital" | "chess" | "civilinc" | "water";
 
 export type Project = {
   id: string;
@@ -238,8 +238,43 @@ export const projects: Project[] = [
     visualNote: "Illustrative SOC interface — not live traffic",
   },
   {
-    id: "a-vital-pro",
+    id: "gazeforge",
     number: "02",
+    title: "GazeForge",
+    subtitle: "Synthetic Eye Motion on Google's GNM Head",
+    category: "3D Graphics · Synthetic Data · XR",
+    accent: "#8B7AFF",
+    description:
+      "Samsung PRISM XR Hackathon 2026 (Track 1) entry: textures and animates Google's GNM v3 head model in Blender, without remeshing it, with photoreal procedural textures and physiologically timed eye, eyelid and brow motion.",
+    problem:
+      "Gaze-estimation and XR systems need large amounts of labelled eye imagery. GazeForge generates it synthetically: realistic faces whose eyes, lids and head move the way real ones do, with exact per-frame labels.",
+    approach: [
+      "8 complete UDIM texture sets (4K skin, separate left/right irises, teeth, tongue) across 8 GNM identities and skin tones — seam-free because every texel is evaluated in 3D.",
+      "Saccades on the Baloh (1975) main-sequence profile, timed blinks, microsaccades, eye–head coordination (VOR) and Listing's-law fixation.",
+      "Eyelid and brow actions isolated from GNM's own expression basis by a masked ridge least-squares fit.",
+      "Left / Right / Generate Motion scripts render frames and MP4s with a per-frame motion JSON; a Timeline-animated .blend.",
+    ],
+    results: [
+      { value: "8", label: "Photoreal texture sets across 8 identities" },
+      { value: "1.1×10⁻⁷ m", label: "NumPy GNM evaluator vs Google's reference" },
+    ],
+    details: [
+      "Earlier V2 calibrated eye rig: 9/9 acceptance groups (63/63 checks); labels within 0.26 px of detected pupils.",
+      "Runs on Blender 4.2+ with only NumPy — no TensorFlow; Colab notebook for full-HD GPU renders.",
+      "Textures are procedural — no images of real people.",
+    ],
+    tags: ["Blender", "Python", "NumPy", "GNM v3", "Computer Vision", "Synthetic Data"],
+    links: [
+      { label: "GitHub", href: "https://github.com/YuvarajSYali-developer/GazeForge", kind: "github" },
+      { label: "Demo video", href: "https://github.com/YuvarajSYali-developer/GazeForge/blob/main/demo/GazeForge_demo.mp4", kind: "video" },
+    ],
+    visual: "gazeforge",
+    image: "/images/projects/gazeforge.webp",
+    visualNote: "Renders from the project",
+  },
+  {
+    id: "a-vital-pro",
+    number: "03",
     title: "A-VITAL PRO",
     subtitle: "Animal Health Disease Prediction",
     category: "Applied ML · Interactive 3D",
@@ -269,7 +304,7 @@ export const projects: Project[] = [
   },
   {
     id: "chess-guru",
-    number: "03",
+    number: "04",
     title: "Chess-Guru",
     subtitle: "AI Chess Error Prediction System",
     category: "ML Research · Interpretability",
@@ -301,7 +336,7 @@ export const projects: Project[] = [
   },
   {
     id: "civilinc",
-    number: "04",
+    number: "05",
     title: "CivilInc",
     subtitle: "Smart Civic Infrastructure Navigator",
     category: "Full-Stack · Civic Tech",
@@ -332,31 +367,6 @@ export const projects: Project[] = [
     ],
     visual: "civilinc",
     visualNote: "Illustrative civic dashboard",
-  },
-  {
-    id: "smart-water-valve",
-    number: "05",
-    title: "Smart Water Valve",
-    subtitle: "Control System",
-    category: "IoT · Embedded Systems",
-    accent: "#628AFF",
-    description: "An end-to-end intelligent IoT monitoring and water valve control platform.",
-    problem:
-      "Water systems need continuous monitoring and quick reaction to abnormal consumption or pressure — without a person watching the readings all day.",
-    approach: [
-      "Arduino Uno connected to a Python / Flask backend over a USB serial protocol.",
-      "Real-time monitoring dashboard.",
-      "Rule-based alert engine for high consumption, pressure anomalies and maintenance detection.",
-    ],
-    results: [
-      { value: "99.9%+", label: "Reported uptime" },
-      { value: "<100ms", label: "Reported response time" },
-    ],
-    details: ["Hardware-to-dashboard pipeline built end to end.", "Alerts cover consumption, pressure and maintenance."],
-    tags: ["Arduino Uno", "Python", "Flask", "USB Serial", "Real-time Monitoring"],
-    links: [{ label: "GitHub", href: "https://github.com/YuvarajSYali-developer/Ardino_valve_project", kind: "github" }],
-    visual: "water",
-    visualNote: "Illustrative system diagram",
   },
 ];
 
@@ -413,7 +423,7 @@ export const skillGroups: { group: string; items: string[] }[] = [
     items: ["PyTorch", "TensorFlow", "Scikit-learn", "XGBoost", "PyTorch Geometric", "Transformers", "CNN"],
   },
   { group: "Explainable AI", items: ["SHAP", "Grad-CAM"] },
-  { group: "Tools", items: ["Git", "Docker", "Hugging Face", "Render", "Railway", "Arduino"] },
+  { group: "Tools", items: ["Git", "Docker", "Blender", "Hugging Face", "Render", "Railway", "Arduino"] },
 ];
 
 /** simple-icons slugs used in the 3D cloud (XGBoost, SHAP, Grad-CAM have no official logo — listed in text). */
@@ -441,6 +451,7 @@ export const iconCloudSlugs = [
   "render",
   "railway",
   "arduino",
+  "blender",
   "numpy",
   "pandas",
 ] as const;
